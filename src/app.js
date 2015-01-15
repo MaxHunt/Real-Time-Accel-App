@@ -19,8 +19,8 @@ var AccelerometerScreen = new UI.Window();
 //Elements for AccelermeterScreen
 var AxisDisplayText = new UI.Text({ position: new Vector2(0,0), size: new Vector2(144, 168) });
 var xAxisText = new UI.Text({ position: new Vector2(0,50), size: new Vector2(144, 168) });
-var yAxisText = new UI.Text({ position: new Vector2(0,100), size: new Vector2(144, 168) });
-var zAxisText = new UI.Text({ position: new Vector2(0,150), size: new Vector2(144, 168) });
+var yAxisText = new UI.Text({ position: new Vector2(0,75), size: new Vector2(144, 168) });
+var zAxisText = new UI.Text({ position: new Vector2(0,100), size: new Vector2(144, 168) });
 
 var xAxis = 0;
 var yAxis = 0;
@@ -49,7 +49,7 @@ function onClick(e) {
    console.log("Enter Real Time Loop");
    AccelerometerScreen.show();
    AccelerometerScreen.on('click','select',onAccelSelect);
-   Accel.peek(onPeek);              
+   Accel.on('data', onPeek);           
 }
 
 //Close Screen and Stop loop
