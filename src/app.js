@@ -41,6 +41,7 @@ console.log("App started");
 main.show();
 main.on('click', 'select', onClick);
 
+
 function onClick(e) {
    inAccelScreen = true;
    console.log('Entered Tracker');
@@ -49,26 +50,40 @@ function onClick(e) {
    console.log("Enter Real Time Loop");
    AccelerometerScreen.show();
    AccelerometerScreen.on('click','select',onAccelSelect);
-   Accel.on('data', onPeek);           
+   if (inAccelScreen === true){
+      Accel.on('data', onPeek);  
+   }        
 }
 
 //Close Screen and Stop loop
 function onAccelSelect(){
+   
    console.log('Close Screen and Stop Loop');
    inAccelScreen = false;
+   AccelerometerScreen.hide();
+   //removes screen from queue
    AccelerometerScreen.hide();
 }
 
 //Get Values for Acelerometer
 function onPeek(e){
-   console.log('Peeking'); 
-   xAxis = e.accel.x;
-   yAxis = e.accel.y;
-   zAxis = e.accel.z;
-   insertElements();   
+   if (inAccelScreen === true){
+      console.log('Peeking'); 
+      xAxis = e.accel.x;
+      yAxis = e.accel.y;
+      zAxis = e.accel.z;
+      insertElements();       
+   }
+   else{
+      console.log("emptyfunction");
+      AccelerometerScreen.hide();
+      Accel.config({
+         subscribe: false
+      });
+   }      
 }
 
-//Inseret onto screen
+//Insert onto screen
 function insertElements() {  
    xAxisText.text('X Axis:' + xAxis);
    yAxisText.text('Y Axis:' + yAxis);
