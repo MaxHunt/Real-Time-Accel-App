@@ -15,8 +15,9 @@ Accel.init();
 var UI = require('ui');
 //get vector Pebble Libary
 var Vector2 = require('vector2');
+//Screen for real time results
 var AccelerometerScreen = new UI.Window();
-//Elements for AccelermeterScreen
+//Elements for AccelerometerScreen
 var AxisDisplayText = new UI.Text({ position: new Vector2(0,0), size: new Vector2(144, 168) });
 var xAxisText = new UI.Text({ position: new Vector2(0,50), size: new Vector2(144, 168) });
 var yAxisText = new UI.Text({ position: new Vector2(0,75), size: new Vector2(144, 168) });
@@ -50,9 +51,7 @@ function onClick(e) {
    console.log("Enter Real Time Loop");
    AccelerometerScreen.show();
    AccelerometerScreen.on('click','select',onAccelSelect);
-   if (inAccelScreen === true){
-      Accel.on('data', onPeek);  
-   }        
+   Accel.on('data', onPeek);         
 }
 
 //Close Screen and Stop loop
@@ -60,9 +59,7 @@ function onAccelSelect(){
    
    console.log('Close Screen and Stop Loop');
    inAccelScreen = false;
-   AccelerometerScreen.hide();
-   //removes screen from queue
-   AccelerometerScreen.hide();
+   AccelerometerScreen.hide();   
 }
 
 //Get Values for Acelerometer
@@ -84,7 +81,7 @@ function onPeek(e){
 }
 
 //Insert onto screen
-function insertElements() {  
+function insertElements() { 
    xAxisText.text('X Axis:' + xAxis);
    yAxisText.text('Y Axis:' + yAxis);
    zAxisText.text('Z Axis:' + zAxis);
