@@ -46,16 +46,17 @@ main.on('click', 'select', onClick);
 function onClick(e) {
    inAccelScreen = true;
    console.log('Entered Tracker');
-   AxisDisplayText.text('Real time acceleration');
+   AxisDisplayText.text('Real Time Acceleration');
    AccelerometerScreen.insert(0,AxisDisplayText);
    console.log("Enter Real Time Loop");
    AccelerometerScreen.show();
-   AccelerometerScreen.on('click','select',onAccelSelect);
+   AccelerometerScreen.on('click','back',onAccelExit);
+   AccelerometerScreen.on('click','select',onAccelExit);
    Accel.on('data', onPeek);         
 }
 
 //Close Screen and Stop loop
-function onAccelSelect(){
+function onAccelExit(){
    
    console.log('Close Screen and Stop Loop');
    inAccelScreen = false;
