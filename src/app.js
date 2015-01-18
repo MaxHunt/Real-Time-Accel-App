@@ -58,7 +58,7 @@ function onClick(e) {
 //Close Screen and Stop loop
 function onAccelExit(){
    
-   console.log('Close Screen and Stop Loop');
+   console.log('Close Screen and Stop data event');
    inAccelScreen = false;
    AccelerometerScreen.hide();   
 }
