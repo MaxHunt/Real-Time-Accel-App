@@ -33,8 +33,8 @@ var inAccelScreen = false;
 var main = new UI.Card({   
    icon: 'images/menu_icon.png',
    subtitle: 'Real Time Tracking',
-   body: 'Press the select button to go to start real time monitering.',
-   scrollable: true
+   body: 'Press the select button to start real time monitering.',
+   scrollable: false
 });
 
 //start APP
